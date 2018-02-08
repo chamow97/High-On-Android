@@ -10,4 +10,4 @@ High on Android
 </p>
 Screen
 <br>
-<img src="Screen/Calc.gif" alt="Calculator Screenshot">
+<img src="Screens/Calc.gif" alt="Calculator Screenshot">
