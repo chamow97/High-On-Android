@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        location = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        location = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -30,12 +30,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        location.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 0, (LocationListener) this);
+        location.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
 
-    }
+           }
 
+
+    @Override
     public void onLocationChanged(Location location) {
-        Toast.makeText(this, "Latitude: " + location.getLatitude() + " |  Longitude: " + location.getLongitude(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, (int) location.getLatitude(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -45,13 +47,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onProviderEnabled(String provider) {
-        Toast.makeText(getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT ).show();
 
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        Toast.makeText(getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT ).show();
 
     }
 }

@@ -124,8 +124,4 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(Message);
         builder.show();
     }
-
-
-
-
 }
